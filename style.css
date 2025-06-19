@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: black;
+    color: blue;
+}
+
+.card{
+    width: 90%;
+    max-width: 700px;
+    margin: 100px  auto 0;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 40px 35px;  
+    text-align: center;
+   /* https://grabient.com/HQdgLAbANKkwnPAzFAtABmAJnQRhruumpocRsGDiZVtBZGDOgKwsw4g1ZVA/ */
+
+    background: linear-gradient(45deg, rgba(142, 197, 252, 1.000) 0.000%, rgba(141, 211, 255, 1.000) 25.000%, rgba(161, 216, 255, 1.000) 50.000%, rgba(193, 210, 255, 1.000) 75.000%, rgba(224, 195, 255, 1.000) 100.000%);
+}
+
+.search {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search input {
+    border: 0;
+    outline: 0;
+    background: #ebfffc;
+    color: #555;
+    padding: 10px 25px;
+    border-radius: 30px;
+    flex: 1;
+    margin-right: 16px;
+    font-size: 18px;
+}
+
+.search button {
+    /* https://grabient.com/HQdgLAbANKkwnPAzFAtABmAJnQRhruumpocRsGDiZVtBZGDOgKwsw4g1ZVA/ */
+
+background: linear-gradient(45deg, rgba(142, 197, 252, 1.000) 0.000%, rgba(141, 211, 255, 1.000) 25.000%, rgba(161, 216, 255, 1.000) 50.000%, rgba(193, 210, 255, 1.000) 75.000%, rgba(224, 195, 255, 1.000) 100.000%);
+    color: white;
+    border: 0;
+    outline: 0;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.weather-info {
+    margin-top: 20px;
+    display: none;
+}
+
+.weather-info h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: white;
+}
+.weather-info p {
+    font-size: 20px;
+    margin: 5px 0;
+    color: white;
+}
+
+.weather-info img {
+    width: 100px;
+    height: 100px;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    color: white;
+    display: none;
+}
+
+

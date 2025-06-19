@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card">
+        <div class="search">
+            <input type="text"  id="searchInput" placeholder="Enter city name" spellcheck="false">
+            <button id="searchButton">Search</button>
+        </div>
+        <div class="weather-info">
+            <h2 id="cityName">City Name</h2>
+            <p id="temperature">Temperature: 0°C</p>
+            <img src=" https://openweathermap.org/img/wn/01d.png" class="icon-w" alt="">
+        </div>
+        <div class="details">
+            <p id="description">Description: Clear sky</p>
+            <p id="humidity">Humidity: 0%</p>
+            <p id="windSpeed">Wind Speed: 0 m/s</p>
+        </div>
+    </div>
+    <script>
+        const apiKey = "c3c487e30e7b3b4e3eac3985f7578aee";
+        const apiUrl ="https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+        const searchBox = document.querySelector(".search input");
+        const searchButton = document.querySelector(".search button");
+        const weatherIcon = document.querySelector(".icon-w");
+
+
+        async function checkWeather(city) {
+
+            const response = await fetch(apiUrl+ city +`&appid=${apiKey}`);
+            var data = await response.json();
+            console.log(data);
+            document.querySelector("#cityName").innerText = data.name;
+            document.querySelector("#temperature").innerText = `Temperature: ${data.main.temp}°C`;
+            document.querySelector("#description").innerText = `Description: ${data.weather[0].description}`;
+            document.querySelector("#humidity").innerText = `Humidity: ${data.main.humidity}%`;
+            document.querySelector("#windSpeed").innerText = `Wind Speed: ${data.wind.speed} m/s`;
+
+            if (data.weather[0].main == "Clouds") {
+                weatherIcon.src = "https://openweathermap.org/img/wn/04d.png";
+            } else if (data.weather[0].main == "Clear") {
+                weatherIcon.src = "https://openweathermap.org/img/wn/01d.png";
+            } else if (data.weather[0].main == "Rain") {
+                weatherIcon.src = "https://openweathermap.org/img/wn/10d.png";
+            } else if (data.weather[0].main == "Drizzle") {
+                weatherIcon.src = "https://openweathermap.org/img/wn/09d.png";
+            } else if (data.weather[0].main == "Mist") {
+                weatherIcon.src = "https://openweathermap.org/img/wn/50d.png";
+            } else if (data.weather[0].main == "Snow") {
+                weatherIcon.src = "https://openweathermap.org/img/wn/13d.png";
+            }
+
+            const weatherInfo = document.querySelector(".weather-info");
+            weatherInfo.style.display = "flex";
+            weatherInfo.style.flexDirection = "column";
+            weatherInfo.style.alignItems = "center";
+
+            const details = document.querySelector(".details");
+            details.style.display = "flex";
+            details.style.flexDirection = "row";
+            details.style.alignItems = "center";
+        }
+
+        searchButton.addEventListener("click", () => {
+            checkWeather(searchBox.value);
+        });
+
+
+    </script>
+</body>
+</html>
